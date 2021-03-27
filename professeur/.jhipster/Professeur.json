@@ -1,0 +1,76 @@
+{
+  "name": "Professeur",
+  "fields": [
+    {
+      "fieldName": "photo",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "nom",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "prenom",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sexe",
+      "fieldType": "Sexe",
+      "fieldValues": "M,F"
+    },
+    {
+      "fieldName": "dateNaissance",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "lieuNaissance",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "tel",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "adresse",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "diplome",
+      "otherEntityRelationshipName": "professeur",
+      "relationshipName": "diplome"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "retard",
+      "otherEntityRelationshipName": "professeur",
+      "relationshipName": "retard"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "abscence",
+      "otherEntityRelationshipName": "professeur",
+      "relationshipName": "abscence"
+    }
+  ],
+  "changelogDate": "20210325184016",
+  "entityTableName": "professeur",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["gateway", "professeur"],
+  "microserviceName": "professeur"
+}

@@ -1,0 +1,29 @@
+{
+  "gatewayApp": {
+    "inscriptionClasse": {
+      "home": {
+        "title": "Classes",
+        "createLabel": "Créer un nouveau Classe",
+        "createOrEditLabel": "Créer ou éditer un Classe",
+        "notFound": "Aucun Classe trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Classe {{ id }} ?"
+      },
+      "detail": {
+        "title": "Classe"
+      },
+      "libelle": "Libelle",
+      "classe": "Classe",
+      "eleve": "Eleve",
+      "anneeScolaire": "Annee Scolaire"
+    }
+  },
+  "inscriptionApp": {
+    "inscriptionClasse": {
+      "created": "Un nouveau Classe a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Classe avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Classe avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gatewayApp": {
+    "inscriptionAnneeScolaire": {
+      "home": {
+        "title": "AnneeScolaires",
+        "createLabel": "Créer un nouveau Annee Scolaire",
+        "createOrEditLabel": "Créer ou éditer un Annee Scolaire",
+        "notFound": "Aucun Annee Scolaire trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Annee Scolaire {{ id }} ?"
+      },
+      "detail": {
+        "title": "Annee Scolaire"
+      },
+      "dateDebut": "Date Debut",
+      "dateFin": "Date Fin",
+      "eleve": "Eleve",
+      "classe": "Classe"
+    }
+  },
+  "inscriptionApp": {
+    "inscriptionAnneeScolaire": {
+      "created": "Un nouveau Annee Scolaire a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Annee Scolaire avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Annee Scolaire avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "generator-jhipster": {
+    "deploymentType": "docker-compose",
+    "gatewayType": "zuul",
+    "monitoring": "no",
+    "directoryPath": "../",
+    "appsFolders": ["gateway", "professeur", "inscription"],
+    "clusteredDbApps": [],
+    "consoleOptions": [],
+    "serviceDiscoveryType": "eureka",
+    "dockerRepositoryName": "celloupro",
+    "dockerPushCommand": "docker push",
+    "jwtSecretKey": "YmYwZmI0N2UxZWYxZTI5MDcwYmQ2ZGYzMjQ0YTAyMWU4ODZjMDQ1YmZkMWY4OGY0YWQ2ZmY3NzBjNmI4ZGQ2ZGZlZWQ5NmM2MGI1YzMwZTI3YjU2NGY3N2RjNDczMDczNGRlNQ=="
+  }
+}

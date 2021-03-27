@@ -1,0 +1,63 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="professeur">
+            <h2><span jhiTranslate="gatewayApp.professeurProfesseur.detail.title">Professeur</span> {{ professeur.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gatewayApp.professeurProfesseur.photo">Photo</span></dt>
+                <dd>
+                    <div *ngIf="professeur.photo">
+                        <a (click)="openFile(professeur.photoContentType, professeur.photo)">
+                            <img [src]="'data:' + professeur.photoContentType + ';base64,' + professeur.photo" style="max-width: 100%;" alt="professeur image"/>
+                        </a>
+                        {{ professeur.photoContentType }}, {{ byteSize(professeur.photo) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurProfesseur.nom">Nom</span></dt>
+                <dd>
+                    <span>{{ professeur.nom }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurProfesseur.prenom">Prenom</span></dt>
+                <dd>
+                    <span>{{ professeur.prenom }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurProfesseur.sexe">Sexe</span></dt>
+                <dd>
+                    <span jhiTranslate="{{ 'gatewayApp.Sexe.' + professeur.sexe }}">{{ professeur.sexe }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurProfesseur.dateNaissance">Date Naissance</span></dt>
+                <dd>
+                    <span>{{ professeur.dateNaissance }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurProfesseur.lieuNaissance">Lieu Naissance</span></dt>
+                <dd>
+                    <span>{{ professeur.lieuNaissance }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurProfesseur.tel">Tel</span></dt>
+                <dd>
+                    <span>{{ professeur.tel }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurProfesseur.adresse">Adresse</span></dt>
+                <dd>
+                    <span>{{ professeur.adresse }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/professeur', professeur.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

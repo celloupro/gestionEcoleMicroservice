@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="abscence">
+            <h2><span jhiTranslate="gatewayApp.professeurAbscence.detail.title">Abscence</span> {{ abscence.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gatewayApp.professeurAbscence.heureDebut">Heure Debut</span></dt>
+                <dd>
+                    <span>{{ abscence.heureDebut }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurAbscence.heureFin">Heure Fin</span></dt>
+                <dd>
+                    <span>{{ abscence.heureFin }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurAbscence.nombreHeure">Nombre Heure</span></dt>
+                <dd>
+                    <span>{{ abscence.nombreHeure }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurAbscence.dateAbsence">Date Absence</span></dt>
+                <dd>
+                    <span>{{ abscence.dateAbsence }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurAbscence.motif">Motif</span></dt>
+                <dd>
+                    <span>{{ abscence.motif }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurAbscence.professeur">Professeur</span></dt>
+                <dd>
+                    <div *ngIf="abscence.professeur">
+                        <a [routerLink]="['/professeur', abscence.professeur?.id, 'view']">{{ abscence.professeur?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/abscence', abscence.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

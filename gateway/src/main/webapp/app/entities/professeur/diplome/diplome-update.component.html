@@ -1,0 +1,92 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-diplome-heading" jhiTranslate="gatewayApp.professeurDiplome.home.createOrEditLabel">Create or edit a Diplome</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayApp.professeurDiplome.intitule" for="field_intitule">Intitule</label>
+                    <input type="text" class="form-control" name="intitule" id="field_intitule"
+                           formControlName="intitule"/>
+                    <div *ngIf="editForm.get('intitule')!.invalid && (editForm.get('intitule')!.dirty || editForm.get('intitule')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('intitule')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayApp.professeurDiplome.ecole" for="field_ecole">Ecole</label>
+                    <input type="text" class="form-control" name="ecole" id="field_ecole"
+                           formControlName="ecole"/>
+                    <div *ngIf="editForm.get('ecole')!.invalid && (editForm.get('ecole')!.dirty || editForm.get('ecole')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('ecole')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayApp.professeurDiplome.specialite" for="field_specialite">Specialite</label>
+                    <input type="text" class="form-control" name="specialite" id="field_specialite"
+                           formControlName="specialite"/>
+                    <div *ngIf="editForm.get('specialite')!.invalid && (editForm.get('specialite')!.dirty || editForm.get('specialite')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('specialite')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayApp.professeurDiplome.niveau" for="field_niveau">Niveau</label>
+                    <input type="text" class="form-control" name="niveau" id="field_niveau"
+                           formControlName="niveau"/>
+                    <div *ngIf="editForm.get('niveau')!.invalid && (editForm.get('niveau')!.dirty || editForm.get('niveau')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('niveau')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayApp.professeurDiplome.dateObtention" for="field_dateObtention">Date Obtention</label>
+                    <div class="input-group">
+                        <input id="field_dateObtention" type="text" class="form-control" name="dateObtention" ngbDatepicker #dateObtentionDp="ngbDatepicker" formControlName="dateObtention"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateObtentionDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayApp.professeurDiplome.professeur" for="field_professeur">Professeur</label>
+                    <select class="form-control" id="field_professeur" name="professeur" formControlName="professeur">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="professeurOption.id === editForm.get('professeur')!.value?.id ? editForm.get('professeur')!.value : professeurOption" *ngFor="let professeurOption of professeurs; trackBy: trackById">{{ professeurOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

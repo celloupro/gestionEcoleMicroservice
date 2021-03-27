@@ -1,0 +1,157 @@
+application {
+  config {
+    baseName gateway,
+    packageName com.ecoleprimaire.gateway,
+    applicationType gateway,
+    authenticationType oauth2,
+    prodDatabaseType mysql,
+    serviceDiscoveryType eureka,
+    testFrameworks [protractor]
+  }
+  entities Professeur,Diplome,Retard,Abscence,Eleve, Parent, Niveau, AnneeScolaire,Classe
+}
+
+application {
+  config {
+    baseName inscription,
+    packageName com.ecoleprimaire.ecole,
+    applicationType microservice,
+    authenticationType oauth2,
+    prodDatabaseType mysql,
+    serverPort 8081,
+    serviceDiscoveryType eureka
+  }
+  entities Eleve, Parent, Niveau, AnneeScolaire,Classe
+}
+
+application {
+  config {
+    baseName professeur,
+    packageName com.ecoleprimaire.professeur,
+    applicationType microservice,
+    authenticationType oauth2,
+    databaseType sql,
+    devDatabaseType h2Disk,
+    prodDatabaseType mysql,
+    enableHibernateCache false,
+    serverPort 8082,
+    serviceDiscoveryType eureka
+  }
+  entities Professeur,Diplome,Retard,Abscence
+}
+//---------------------------eleve-----------------
+entity Eleve {
+  photo ImageBlob,
+  nom String required,
+  prenom String required,
+  sexe String required,
+  dateNaissance LocalDate,
+  lieuNaissance String required,
+  matricule String required,
+  adresse String required
+}
+
+entity Parent {
+  nom String required,
+  prenom String required,
+  sexe String required,
+  dateNaissance LocalDate,
+  lieuNaissance String required,
+  typeParente String required,
+  tel String required,
+  adresse String required,
+  numCarteIdentite String required
+  
+}
+
+entity Classe {
+  libelle String required
+}
+
+
+entity Niveau {
+  libelle String required,
+  option String required,
+  capaciteClasse Integer
+}
+
+entity AnneeScolaire {
+ dateDebut LocalDate required,
+ dateFin LocalDate required,
+}
+
+relationship ManyToOne {
+	Classe{classe} to Niveau
+}
+
+relationship ManyToMany {
+	Eleve{parent(numCarteIdentite)} to Parent{eleve},
+    Eleve{classe(libelle)} to Classe{eleve},
+    AnneeScolaire{eleve(nom)} to Eleve{anneeScolaire},
+   	AnneeScolaire{classe(libelle)} to Classe{anneeScolaire}
+}
+//----------------Prof-------------------
+entity Professeur {
+  photo ImageBlob,
+  nom String required,
+  prenom String required,
+  sexe String required,
+  dateNaissance LocalDate,
+  lieuNaissance String required,
+  tel String required,
+  adresse String required
+  sexe Sexe
+}
+
+enum Sexe {
+    M, F
+}
+
+entity Diplome {
+  intitule String required,
+  ecole String required,
+  specialite String required,
+  niveau String required,
+  dateObtention LocalDate,
+}
+
+entity Retard {
+  heureDebut ZonedDateTime required,
+  heureFin ZonedDateTime required,
+  nombreHeure Duration,
+  dateRetard  LocalDate,
+  motif String required,
+}
+
+entity Abscence {
+  heureDebut ZonedDateTime required,
+  heureFin ZonedDateTime required,
+  nombreHeure Duration,
+  dateAbsence  LocalDate,
+  motif String required,
+}
+
+relationship OneToMany {
+	Professeur to Diplome{professeur},
+	Professeur to Retard{professeur},
+    Professeur to Abscence{professeur},
+    
+}
+
+//--------------------------------
+
+
+
+paginate Eleve with infinite-scroll
+paginate Professeur with pagination
+
+microservice Professeur,Diplome,Retard,Abscence with professeur
+microservice Eleve, Parent, Niveau, AnneeScolaire,Classe with inscription
+
+// will be created under 'docker-compose' folder
+deployment {
+  deploymentType docker-compose
+  appsFolders [gateway, professeur, inscription]
+  dockerRepositoryName "celloupro"
+  consoleOptions [zipkin]
+}

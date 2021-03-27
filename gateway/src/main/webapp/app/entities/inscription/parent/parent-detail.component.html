@@ -1,0 +1,62 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="parent">
+            <h2><span jhiTranslate="gatewayApp.inscriptionParent.detail.title">Parent</span> {{ parent.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gatewayApp.inscriptionParent.nom">Nom</span></dt>
+                <dd>
+                    <span>{{ parent.nom }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionParent.prenom">Prenom</span></dt>
+                <dd>
+                    <span>{{ parent.prenom }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionParent.sexe">Sexe</span></dt>
+                <dd>
+                    <span>{{ parent.sexe }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionParent.dateNaissance">Date Naissance</span></dt>
+                <dd>
+                    <span>{{ parent.dateNaissance }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionParent.lieuNaissance">Lieu Naissance</span></dt>
+                <dd>
+                    <span>{{ parent.lieuNaissance }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionParent.typeParente">Type Parente</span></dt>
+                <dd>
+                    <span>{{ parent.typeParente }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionParent.tel">Tel</span></dt>
+                <dd>
+                    <span>{{ parent.tel }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionParent.adresse">Adresse</span></dt>
+                <dd>
+                    <span>{{ parent.adresse }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionParent.numCarteIdentite">Num Carte Identite</span></dt>
+                <dd>
+                    <span>{{ parent.numCarteIdentite }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/parent', parent.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

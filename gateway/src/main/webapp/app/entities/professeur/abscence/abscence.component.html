@@ -1,0 +1,76 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gatewayApp.professeurAbscence.home.title">Abscences</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-abscence" [routerLink]="['/abscence/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gatewayApp.professeurAbscence.home.createLabel">
+            Create a new Abscence
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="abscences?.length === 0">
+        <span jhiTranslate="gatewayApp.professeurAbscence.home.notFound">No abscences found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="abscences && abscences.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.professeurAbscence.heureDebut">Heure Debut</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.professeurAbscence.heureFin">Heure Fin</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.professeurAbscence.nombreHeure">Nombre Heure</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.professeurAbscence.dateAbsence">Date Absence</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.professeurAbscence.motif">Motif</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.professeurAbscence.professeur">Professeurs</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let abscence of abscences ;trackBy: trackId">
+                    <td><a [routerLink]="['/abscence', abscence.id, 'view']">{{ abscence.id }}</a></td>
+                    <td>{{ abscence.heureDebut | date:'medium' }}</td>
+                    <td>{{ abscence.heureFin | date:'medium' }}</td>
+                    <td>{{ abscence.nombreHeure }}</td>
+                    <td>{{ abscence.dateAbsence | date:'mediumDate' }}</td>
+                    <td>{{ abscence.motif }}</td>
+                    <td>
+                        <div *ngIf="abscence.professeur">
+                            <a [routerLink]="['/professeur', abscence.professeur?.id, 'view']" >{{ abscence.professeur?.prenom }}</a>
+
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/abscence', abscence.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/abscence', abscence.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(abscence)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity AnneeScolaire.
+    -->
+    <changeSet id="20210325183916-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="annee_scolaire_id"
+                                 baseTableName="annee_scolaire_eleve"
+                                 constraintName="fk_annee_scolaire_eleve_annee_scolaire_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="annee_scolaire"/>
+
+        <addForeignKeyConstraint baseColumnNames="eleve_id"
+                                 baseTableName="annee_scolaire_eleve"
+                                 constraintName="fk_annee_scolaire_eleve_eleve_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="eleve"/>
+        
+        <addForeignKeyConstraint baseColumnNames="annee_scolaire_id"
+                                 baseTableName="annee_scolaire_classe"
+                                 constraintName="fk_annee_scolaire_classe_annee_scolaire_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="annee_scolaire"/>
+
+        <addForeignKeyConstraint baseColumnNames="classe_id"
+                                 baseTableName="annee_scolaire_classe"
+                                 constraintName="fk_annee_scolaire_classe_classe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="classe"/>
+        
+    </changeSet>
+</databaseChangeLog>

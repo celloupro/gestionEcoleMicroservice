@@ -1,0 +1,45 @@
+{
+  "name": "AnneeScolaire",
+  "fields": [
+    {
+      "fieldName": "dateDebut",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dateFin",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "eleve",
+      "otherEntityRelationshipName": "anneeScolaire",
+      "relationshipName": "eleve",
+      "otherEntityField": "nom",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "classe",
+      "otherEntityRelationshipName": "anneeScolaire",
+      "relationshipName": "classe",
+      "otherEntityField": "libelle",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20210325183916",
+  "entityTableName": "annee_scolaire",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["gateway", "inscription"],
+  "microserviceName": "inscription"
+}

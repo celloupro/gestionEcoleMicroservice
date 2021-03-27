@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "professeurAbscence": {
+      "home": {
+        "title": "Abscences",
+        "createLabel": "Create a new Abscence",
+        "createOrEditLabel": "Create or edit a Abscence",
+        "notFound": "No Abscences found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Abscence {{ id }}?"
+      },
+      "detail": {
+        "title": "Abscence"
+      },
+      "heureDebut": "Heure Debut",
+      "heureFin": "Heure Fin",
+      "nombreHeure": "Nombre Heure",
+      "dateAbsence": "Date Absence",
+      "motif": "Motif",
+      "professeur": "Professeur"
+    }
+  },
+  "professeurApp": {
+    "professeurAbscence": {
+      "created": "A new Abscence is created with identifier {{ param }}",
+      "updated": "A Abscence is updated with identifier {{ param }}",
+      "deleted": "A Abscence is deleted with identifier {{ param }}"
+    }
+  }
+}

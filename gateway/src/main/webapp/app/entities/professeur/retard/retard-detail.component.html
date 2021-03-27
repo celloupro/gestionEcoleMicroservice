@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="retard">
+            <h2><span jhiTranslate="gatewayApp.professeurRetard.detail.title">Retard</span> {{ retard.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gatewayApp.professeurRetard.heureDebut">Heure Debut</span></dt>
+                <dd>
+                    <span>{{ retard.heureDebut }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurRetard.heureFin">Heure Fin</span></dt>
+                <dd>
+                    <span>{{ retard.heureFin }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurRetard.nombreHeure">Nombre Heure</span></dt>
+                <dd>
+                    <span>{{ retard.nombreHeure }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurRetard.dateRetard">Date Retard</span></dt>
+                <dd>
+                    <span>{{ retard.dateRetard }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurRetard.motif">Motif</span></dt>
+                <dd>
+                    <span>{{ retard.motif }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurRetard.professeur">Professeur</span></dt>
+                <dd>
+                    <div *ngIf="retard.professeur">
+                        <a [routerLink]="['/professeur', retard.professeur?.id, 'view']">{{ retard.professeur?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/retard', retard.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

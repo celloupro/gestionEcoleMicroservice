@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="gatewayApp.inscriptionParent.home.title">Parents</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-parent" [routerLink]="['/parent/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="gatewayApp.inscriptionParent.home.createLabel">
+            Create a new Parent
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="parents?.length === 0">
+        <span jhiTranslate="gatewayApp.inscriptionParent.home.notFound">No parents found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="parents && parents.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.inscriptionParent.nom">Nom</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.inscriptionParent.prenom">Prenom</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.inscriptionParent.sexe">Sexe</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.inscriptionParent.dateNaissance">Date Naissance</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.inscriptionParent.lieuNaissance">Lieu Naissance</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.inscriptionParent.typeParente">Type Parente</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.inscriptionParent.tel">Tel</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.inscriptionParent.adresse">Adresse</span></th>
+                    <th scope="col" ><span jhiTranslate="gatewayApp.inscriptionParent.numCarteIdentite">Num Carte Identite</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let parent of parents ;trackBy: trackId">
+                    <td><a [routerLink]="['/parent', parent.id, 'view']">{{ parent.id }}</a></td>
+                    <td>{{ parent.nom }}</td>
+                    <td>{{ parent.prenom }}</td>
+                    <td>{{ parent.sexe }}</td>
+                    <td>{{ parent.dateNaissance | date:'mediumDate' }}</td>
+                    <td>{{ parent.lieuNaissance }}</td>
+                    <td>{{ parent.typeParente }}</td>
+                    <td>{{ parent.tel }}</td>
+                    <td>{{ parent.adresse }}</td>
+                    <td>{{ parent.numCarteIdentite }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/parent', parent.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/parent', parent.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(parent)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

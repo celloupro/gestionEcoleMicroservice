@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="diplome">
+            <h2><span jhiTranslate="gatewayApp.professeurDiplome.detail.title">Diplome</span> {{ diplome.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gatewayApp.professeurDiplome.intitule">Intitule</span></dt>
+                <dd>
+                    <span>{{ diplome.intitule }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurDiplome.ecole">Ecole</span></dt>
+                <dd>
+                    <span>{{ diplome.ecole }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurDiplome.specialite">Specialite</span></dt>
+                <dd>
+                    <span>{{ diplome.specialite }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurDiplome.niveau">Niveau</span></dt>
+                <dd>
+                    <span>{{ diplome.niveau }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurDiplome.dateObtention">Date Obtention</span></dt>
+                <dd>
+                    <span>{{ diplome.dateObtention }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.professeurDiplome.professeur">Professeur</span></dt>
+                <dd>
+                    <div *ngIf="diplome.professeur">
+                        <a [routerLink]="['/professeur', diplome.professeur?.id, 'view']">{{ diplome.professeur?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/diplome', diplome.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

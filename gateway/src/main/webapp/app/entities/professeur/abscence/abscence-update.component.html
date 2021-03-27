@@ -1,0 +1,96 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-abscence-heading" jhiTranslate="gatewayApp.professeurAbscence.home.createOrEditLabel">Create or edit a Abscence</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayApp.professeurAbscence.heureDebut" for="field_heureDebut">Heure Debut</label>
+                    <div class="d-flex">
+                        <input id="field_heureDebut" type="datetime-local" class="form-control" name="heureDebut" formControlName="heureDebut" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('heureDebut')!.invalid && (editForm.get('heureDebut')!.dirty || editForm.get('heureDebut')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('heureDebut')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('heureDebut')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayApp.professeurAbscence.heureFin" for="field_heureFin">Heure Fin</label>
+                    <div class="d-flex">
+                        <input id="field_heureFin" type="datetime-local" class="form-control" name="heureFin" formControlName="heureFin" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('heureFin')!.invalid && (editForm.get('heureFin')!.dirty || editForm.get('heureFin')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('heureFin')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('heureFin')?.errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayApp.professeurAbscence.nombreHeure" for="field_nombreHeure">Nombre Heure</label>
+                    <input type="number" class="form-control" name="nombreHeure" id="field_nombreHeure"
+                           formControlName="nombreHeure"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayApp.professeurAbscence.dateAbsence" for="field_dateAbsence">Date Absence</label>
+                    <div class="input-group">
+                        <input id="field_dateAbsence" type="text" class="form-control" name="dateAbsence" ngbDatepicker #dateAbsenceDp="ngbDatepicker" formControlName="dateAbsence"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateAbsenceDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayApp.professeurAbscence.motif" for="field_motif">Motif</label>
+                    <input type="text" class="form-control" name="motif" id="field_motif"
+                           formControlName="motif"/>
+                    <div *ngIf="editForm.get('motif')!.invalid && (editForm.get('motif')!.dirty || editForm.get('motif')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('motif')?.errors?.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="gatewayApp.professeurAbscence.professeur" for="field_professeur">Professeur</label>
+                    <select class="form-control" id="field_professeur" name="professeur" formControlName="professeur">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="professeurOption.id === editForm.get('professeur')!.value?.id ? editForm.get('professeur')!.value : professeurOption" *ngFor="let professeurOption of professeurs; trackBy: trackById">{{ professeurOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

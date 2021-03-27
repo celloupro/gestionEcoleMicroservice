@@ -1,0 +1,35 @@
+{
+  "gatewayApp": {
+    "inscriptionParent": {
+      "home": {
+        "title": "Parents",
+        "createLabel": "Créer un nouveau Parent",
+        "createOrEditLabel": "Créer ou éditer un Parent",
+        "notFound": "Aucun Parent trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Parent {{ id }} ?"
+      },
+      "detail": {
+        "title": "Parent"
+      },
+      "nom": "Nom",
+      "prenom": "Prenom",
+      "sexe": "Sexe",
+      "dateNaissance": "Date Naissance",
+      "lieuNaissance": "Lieu Naissance",
+      "typeParente": "Type Parente",
+      "tel": "Tel",
+      "adresse": "Adresse",
+      "numCarteIdentite": "Num Carte Identite",
+      "eleve": "Eleve"
+    }
+  },
+  "inscriptionApp": {
+    "inscriptionParent": {
+      "created": "Un nouveau Parent a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Parent avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Parent avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

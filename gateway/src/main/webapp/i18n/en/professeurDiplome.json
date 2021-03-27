@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "professeurDiplome": {
+      "home": {
+        "title": "Diplomes",
+        "createLabel": "Create a new Diplome",
+        "createOrEditLabel": "Create or edit a Diplome",
+        "notFound": "No Diplomes found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Diplome {{ id }}?"
+      },
+      "detail": {
+        "title": "Diplome"
+      },
+      "intitule": "Intitule",
+      "ecole": "Ecole",
+      "specialite": "Specialite",
+      "niveau": "Niveau",
+      "dateObtention": "Date Obtention",
+      "professeur": "Professeur"
+    }
+  },
+  "professeurApp": {
+    "professeurDiplome": {
+      "created": "A new Diplome is created with identifier {{ param }}",
+      "updated": "A Diplome is updated with identifier {{ param }}",
+      "deleted": "A Diplome is deleted with identifier {{ param }}"
+    }
+  }
+}

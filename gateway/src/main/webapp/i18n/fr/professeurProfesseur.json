@@ -1,0 +1,36 @@
+{
+  "gatewayApp": {
+    "professeurProfesseur": {
+      "home": {
+        "title": "Professeurs",
+        "createLabel": "Créer un nouveau Professeur",
+        "createOrEditLabel": "Créer ou éditer un Professeur",
+        "notFound": "Aucun Professeur trouvé"
+      },
+      "delete": {
+        "question": "Etes-vous certain de vouloir supprimer le Professeur {{ id }} ?"
+      },
+      "detail": {
+        "title": "Professeur"
+      },
+      "photo": "Photo",
+      "nom": "Nom",
+      "prenom": "Prenom",
+      "sexe": "Sexe",
+      "dateNaissance": "Date Naissance",
+      "lieuNaissance": "Lieu Naissance",
+      "tel": "Tel",
+      "adresse": "Adresse",
+      "diplome": "Diplome",
+      "retard": "Retard",
+      "abscence": "Abscence"
+    }
+  },
+  "professeurApp": {
+    "professeurProfesseur": {
+      "created": "Un nouveau Professeur a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Professeur avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Professeur avec l'identifiant {{ param }} a été supprimé"
+    }
+  }
+}

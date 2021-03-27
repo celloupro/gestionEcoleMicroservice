@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="eleve">
+            <h2><span jhiTranslate="gatewayApp.inscriptionEleve.detail.title">Eleve</span> {{ eleve.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="gatewayApp.inscriptionEleve.photo">Photo</span></dt>
+                <dd>
+                    <div *ngIf="eleve.photo">
+                        <a (click)="openFile(eleve.photoContentType, eleve.photo)">
+                            <img [src]="'data:' + eleve.photoContentType + ';base64,' + eleve.photo" style="max-width: 100%;" alt="eleve image"/>
+                        </a>
+                        {{ eleve.photoContentType }}, {{ byteSize(eleve.photo) }}
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionEleve.nom">Nom</span></dt>
+                <dd>
+                    <span>{{ eleve.nom }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionEleve.prenom">Prenom</span></dt>
+                <dd>
+                    <span>{{ eleve.prenom }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionEleve.sexe">Sexe</span></dt>
+                <dd>
+                    <span>{{ eleve.sexe }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionEleve.dateNaissance">Date Naissance</span></dt>
+                <dd>
+                    <span>{{ eleve.dateNaissance }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionEleve.lieuNaissance">Lieu Naissance</span></dt>
+                <dd>
+                    <span>{{ eleve.lieuNaissance }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionEleve.matricule">Matricule</span></dt>
+                <dd>
+                    <span>{{ eleve.matricule }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionEleve.adresse">Adresse</span></dt>
+                <dd>
+                    <span>{{ eleve.adresse }}</span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionEleve.parent">Parent</span></dt>
+                <dd>
+                    <span *ngFor="let parent of eleve.parents; let last = last">
+                        <a [routerLink]="['/parent', parent?.id, 'view']">{{ parent.numCarteIdentite }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="gatewayApp.inscriptionEleve.classe">Classe</span></dt>
+                <dd>
+                    <span *ngFor="let classe of eleve.classes; let last = last">
+                        <a [routerLink]="['/classe', classe?.id, 'view']">{{ classe.libelle }}</a>{{ last ? '' : ', ' }}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/eleve', eleve.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+{
+  "gatewayApp": {
+    "professeurRetard": {
+      "home": {
+        "title": "Retards",
+        "createLabel": "Create a new Retard",
+        "createOrEditLabel": "Create or edit a Retard",
+        "notFound": "No Retards found"
+      },
+      "delete": {
+        "question": "Are you sure you want to delete Retard {{ id }}?"
+      },
+      "detail": {
+        "title": "Retard"
+      },
+      "heureDebut": "Heure Debut",
+      "heureFin": "Heure Fin",
+      "nombreHeure": "Nombre Heure",
+      "dateRetard": "Date Retard",
+      "motif": "Motif",
+      "professeur": "Professeur"
+    }
+  },
+  "professeurApp": {
+    "professeurRetard": {
+      "created": "A new Retard is created with identifier {{ param }}",
+      "updated": "A Retard is updated with identifier {{ param }}",
+      "deleted": "A Retard is deleted with identifier {{ param }}"
+    }
+  }
+}

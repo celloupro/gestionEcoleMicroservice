@@ -1,0 +1,49 @@
+{
+  "name": "Abscence",
+  "fields": [
+    {
+      "fieldName": "heureDebut",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "heureFin",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nombreHeure",
+      "fieldType": "Duration"
+    },
+    {
+      "fieldName": "dateAbsence",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "motif",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "professeur",
+      "otherEntityRelationshipName": "abscence",
+      "relationshipName": "professeur",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210325184316",
+  "entityTableName": "abscence",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": ["gateway", "professeur"],
+  "microserviceName": "professeur"
+}
